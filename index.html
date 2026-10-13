@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Spot On</h2>
+        <button onclick="showSection('dashboard')">Dashboard</button>
+        <button onclick="showSection('parking')">Park Vehicle</button>
+        <button onclick="showSection('history')">Parking History</button>
+    </div>
+    <div class="main">
+        <div class="top">
+            <h1>Parking Management</h1>
+            <p>Smart Parking Management System</p>
+        </div>
+        <section id="dashboard">
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Slots</h3>
+                    <h2 id="totalSlots">10</h2>
+                </div>
+                <div class="card">
+                    <h3>Available Slots</h3>
+                    <h2 id="availableSlots">10</h2>
+                </div>
+                <div class="card">
+                    <h3>Occupied Slots</h3>
+                    <h2 id="occupiedSlots">0</h2>
+                </div>
+                <div class="card">
+                    <h3>Total Collection</h3>
+                    <h2>₹<span id="collection">0</span></h2>
+                </div>
+            </div>
+            <h2 class="title">Parking Slots</h2>
+            <div class="slots" id="slotContainer"></div>
+        </section>
+        <section id="parking" class="section">
+            <h2>Park Vehicle</h2>
+            <div class="form">
+                <label>Vehicle Number</label>
+                <input type="text" id="vehicleNumber" placeholder="Example: TN32AB1234">
+                <label>Vehicle Type</label>
+                <select id="vehicleType">
+                    <option value="">Select Vehicle Type</option>
+                    <option value="4 Wheeler">4 Wheeler</option>
+                    <option value="2 Wheeler">2 Wheeler</option>
+                </select>
+                <label>Parking Slot</label>
+                <select id="parkingSlot">
+                    <option value="">Select Parking Slot</option>
+                </select>
+                <button onclick="parkVehicle()">Park Vehicle</button>
+            </div>
+            <div id="parkingBill" class="bill">
+                <div class="bill-header">
+                    <h2>🚗 Spot On</h2>
+                    <p>Parking Entry Ticket</p>
+                </div>
+                <div class="bill-line">
+                    <span>Ticket ID</span>
+                    <b id="billId">---</b>
+                </div>
+                <div class="bill-line">
+                    <span>Vehicle Number</span>
+                    <b id="billVehicle">---</b>
+                </div>
+                <div class="bill-line">
+                    <span>Vehicle Type</span>
+                    <b id="billType">---</b>
+                </div>
+                <div class="bill-line">
+                    <span>Parking Slot</span>
+                    <b id="billSlot">---</b>
+                </div>
+                <div class="bill-line">
+                    <span>Entry Time</span>
+                    <b id="billEntryTime">---</b>
+                </div>
+                <div class="bill-line">
+                    <span>Rate</span>
+                    <b id="billRate">---</b>
+                </div>
+                <p class="thanks">
+                    Please keep this ticket safely.
+                </p>
+            </div>
+        </section>
+        <section id="history" class="section">
+            <h2>Parking History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle</th>
+                        <th>Type</th>
+                        <th>Slot</th>
+                        <th>Entry Time</th>
+                        <th>Duration</th>
+                        <th>Fee</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTable"></tbody>
+            </table>
+        </section>
+    </div>
+    <div id="exitBill" class="exit-bill">
+        <div class="final-bill">
+            <div class="bill-header">
+                <h2>🚗 Spot On</h2>
+                <p>Parking Final Bill</p>
+            </div>
+            <div class="bill-line">
+                <span>Ticket ID</span>
+                <b id="exitId">---</b>
+            </div>
+            <div class="bill-line">
+                <span>Vehicle Number</span>
+                <b id="exitVehicle">---</b>
+            </div>
+            <div class="bill-line">
+                <span>Vehicle Type</span>
+                <b id="exitType">---</b>
+            </div>
+            <div class="bill-line">
+                <span>Parking Slot</span>
+                <b id="exitSlot">---</b>
+            </div>
+            <div class="bill-line">
+                <span>Entry Time</span>
+                <b id="exitEntry">---</b>
+            </div>
+            <div class="bill-line">
+                <span>Exit Time</span>
+                <b id="exitTime">---</b>
+            </div>
+            <div class="bill-line">
+                <span>Parking Duration</span>
+                <b id="exitDuration">---</b>
+            </div>
+            <div class="bill-line">
+                <span>Parking Rate</span>
+                <b id="exitRate">---</b>
+            </div>
+            <div class="bill-line total">
+                <span>Total Amount</span>
+                <b>₹<span id="exitAmount">0</span></b>
+            </div>
+            <p class="thanks">
+                Thank you for using Spot On!
+            </p>
+            <button class="print-btn" onclick="printBill()">
+                Print Bill
+            </button>
+            <button class="close-btn" onclick="closeBill()">
+                Close
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
